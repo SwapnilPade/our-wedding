@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Invitation | Sophia & Alexander</title>
+  <title>Wedding Invitation | Swapnil & Sarvani</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary: #2d3748;
       --accent: #b78a63;
+      --accent-light: #f4ede4;
       --bg-cream: #faf7f2;
       --card-bg: #ffffff;
+      --success: #2e7d32;
       --font-serif: 'Cormorant Garamond', serif;
       --font-sans: 'Montserrat', sans-serif;
     }
@@ -22,6 +24,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -36,11 +42,12 @@
     /* Mobile-first card container */
     .mobile-container {
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       background: var(--card-bg);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
       position: relative;
       overflow-x: hidden;
+      padding-bottom: 50px;
     }
 
     /* Intro / Envelope Screen */
@@ -55,7 +62,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 999;
+      z-index: 9999;
       text-align: center;
       padding: 24px;
       transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -64,46 +71,51 @@
     #welcome-overlay.hidden {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
 
     .monogram {
       font-family: var(--font-serif);
-      font-size: 3rem;
+      font-size: 2.8rem;
       letter-spacing: 4px;
       color: var(--accent);
-      border: 1px solid var(--accent);
+      border: 1.5px solid var(--accent);
       border-radius: 50%;
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(183, 138, 99, 0.15);
     }
 
     .open-btn {
       margin-top: 32px;
-      padding: 12px 32px;
+      padding: 14px 36px;
       background: var(--accent);
       color: #fff;
       border: none;
       border-radius: 30px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(183, 138, 99, 0.3);
-      transition: transform 0.2s ease;
+      box-shadow: 0 6px 18px rgba(183, 138, 99, 0.35);
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
     .open-btn:hover {
-      transform: scale(1.03);
+      transform: scale(1.04);
+      background: #a47650;
     }
 
     /* Hero Section */
     .hero {
-      padding: 60px 24px 30px;
+      padding: 70px 24px 35px;
       text-align: center;
+      background: linear-gradient(180deg, #faf7f2 0%, #ffffff 100%);
       border-bottom: 1px solid #f0eae1;
     }
 
@@ -117,44 +129,46 @@
 
     .names {
       font-family: var(--font-serif);
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 400;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 16px;
+      color: #1a202c;
     }
 
     .wedding-date {
-      font-size: 1rem;
+      font-size: 0.95rem;
       letter-spacing: 2px;
       color: #718096;
+      font-weight: 500;
     }
 
     /* Countdown */
     .countdown-section {
-      padding: 30px 20px;
+      padding: 28px 20px;
       text-align: center;
-      background: #faf7f2;
+      background: var(--accent-light);
     }
 
     .timer {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin-top: 16px;
+      gap: 12px;
+      margin-top: 14px;
     }
 
     .time-box {
       background: #fff;
-      padding: 12px 14px;
-      border-radius: 8px;
-      min-width: 60px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      padding: 10px 14px;
+      border-radius: 10px;
+      min-width: 65px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     }
 
     .time-box span {
       display: block;
-      font-size: 1.3rem;
-      font-weight: 500;
+      font-size: 1.4rem;
+      font-weight: 600;
       color: var(--accent);
     }
 
@@ -165,72 +179,253 @@
       letter-spacing: 1px;
     }
 
-    /* Schedule & Itinerary */
+    /* Dynamic Scrolling Timeline */
+    .timeline-section {
+      padding: 40px 20px;
+    }
+
     .section-title {
       font-family: var(--font-serif);
-      font-size: 2rem;
+      font-size: 2.2rem;
       text-align: center;
-      margin: 40px 0 20px;
-      position: relative;
-    }
-
-    .event-card {
-      margin: 0 24px 24px;
-      padding: 24px;
-      border: 1px solid #f0eae1;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .event-card h4 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: var(--accent);
       margin-bottom: 8px;
+    }
+
+    .section-desc {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #718096;
+      margin-bottom: 30px;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 20px auto;
+      padding-left: 30px;
+    }
+
+    /* Vertical line running through events */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 11px;
+      bottom: 20px;
+      width: 2px;
+      background: #e2d7cb;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+    }
+
+    /* Timeline dot icon */
+    .timeline-dot {
+      position: absolute;
+      left: -30px;
+      top: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-dot::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-card {
+      background: #ffffff;
+      border: 1px solid #f0eae1;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .event-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .event-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: #1a202c;
+      margin-bottom: 6px;
     }
 
     .event-time {
       font-size: 0.85rem;
       font-weight: 500;
+      color: #4a5568;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .event-venue {
+      font-size: 0.85rem;
+      color: #718096;
+      line-height: 1.4;
       margin-bottom: 12px;
     }
 
-    .map-btn, .rsvp-btn {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 10px 24px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .event-dress {
+      font-size: 0.78rem;
+      color: #a0aec0;
+      font-style: italic;
+      margin-bottom: 14px;
     }
 
     .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
       background: transparent;
       border: 1px solid var(--accent);
       color: var(--accent);
+      transition: all 0.2s ease;
     }
 
-    .rsvp-btn {
+    .map-btn:hover {
       background: var(--accent);
       color: #fff;
-      font-weight: 500;
-      padding: 14px 40px;
-      box-shadow: 0 4px 12px rgba(183, 138, 99, 0.25);
     }
 
+    /* RSVP Section */
     .rsvp-section {
-      text-align: center;
-      padding: 40px 24px 60px;
       background: #faf7f2;
+      padding: 40px 24px;
+      border-top: 1px solid #f0eae1;
+    }
+
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      color: #4a5568;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1px solid #e2d7cb;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      background: #fff;
+      color: var(--primary);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+      padding: 15px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(183, 138, 99, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background: #a47650;
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      background: #cbd5e0;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    #form-status {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      display: none;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    #form-status.success {
+      display: block;
+      background: #e8f5e9;
+      color: var(--success);
+      border: 1px solid #c8e6c9;
+    }
+
+    #form-status.error {
+      display: block;
+      background: #ffebee;
+      color: #c62828;
+      border: 1px solid #ffcdd2;
     }
 
     footer {
       text-align: center;
-      padding: 24px;
+      padding: 30px 20px 10px;
       font-size: 0.75rem;
       color: #a0aec0;
+      letter-spacing: 1px;
     }
   </style>
 </head>
@@ -238,25 +433,26 @@
 
   <!-- Opening / Intro Overlay Screen -->
   <div id="welcome-overlay">
-    <div class="monogram">S & A</div>
-    <p class="subtitle">You are cordially invited to celebrate the union of</p>
-    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; margin-top: 10px;">Sophia & Alexander</h2>
+    <div class="monogram">S & S</div>
+    <p class="subtitle">With joyous hearts, you are invited to celebrate</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; margin: 12px 0 6px;">Swapnil &amp; Sarvani</h2>
+    <p style="color: #718096; font-size: 0.9rem; letter-spacing: 1.5px;">SAVE THE DATE</p>
     <button class="open-btn" onclick="openInvitation()">Open Invitation</button>
   </div>
 
   <!-- Main Invitation Body -->
   <div class="mobile-container">
-    
-    <!-- Hero Section -->
+
+    <!-- Hero Header -->
     <header class="hero">
-      <div class="subtitle">The Wedding of</div>
-      <h1 class="names">Sophia &amp; Alexander</h1>
-      <p class="wedding-date">SATURDAY, OCTOBER 18, 2026</p>
+      <div class="subtitle">The Wedding Celebration of</div>
+      <h1 class="names">Swapnil<br>&amp; Sarvani</h1>
+      <p class="wedding-date">SUNDAY, DECEMBER 13, 2026</p>
     </header>
 
     <!-- Countdown Timer -->
     <section class="countdown-section">
-      <p class="subtitle">Counting Down the Moments</p>
+      <p class="subtitle" style="font-size: 0.75rem;">Counting Down to Forever</p>
       <div class="timer">
         <div class="time-box"><span id="days">00</span><label>Days</label></div>
         <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
@@ -265,39 +461,121 @@
       </div>
     </section>
 
-    <!-- Itinerary -->
-    <section>
-      <h3 class="section-title">Schedule of Events</h3>
-      
-      <div class="event-card">
-        <h4>Holy Matrimony</h4>
-        <p class="event-time">4:00 PM – 5:30 PM</p>
-        <p>The Grand Chapel & Gardens<br>124 Blossom Lane, Savannah, GA</p>
-        <a href="https://maps.google.com" target="_blank" class="map-btn">View on Google Maps</a>
-      </div>
+    <!-- Dynamic Scrolling Event Timeline -->
+    <section class="timeline-section">
+      <h3 class="section-title">Schedule &amp; Events</h3>
+      <p class="section-desc">Scroll through the celebration itinerary below</p>
 
-      <div class="event-card">
-        <h4>Dinner &amp; Reception</h4>
-        <p class="event-time">6:30 PM – Late</p>
-        <p>The Glass Pavilion Ballroom<br>Savannah, GA</p>
-        <a href="https://maps.google.com" target="_blank" class="map-btn">View on Google Maps</a>
+      <div class="timeline">
+
+        <!-- Event 1: Haldi / Mehendi -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="event-tag">Pre-Wedding Ceremony</span>
+            <h4 class="event-title">Haldi &amp; Mehendi</h4>
+            <p class="event-time">⏰ 10:30 AM Onwards</p>
+            <p class="event-venue">📍 Courtyard &amp; Lawn, The Grand Palace<br>City, State</p>
+            <p class="event-dress">Dress Code: Festive Yellow &amp; Floral</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions ➔</a>
+          </div>
+        </div>
+
+        <!-- Event 2: Sangeet / Cocktails -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="event-tag">Evening Celebration</span>
+            <h4 class="event-title">Sangeet &amp; Musical Night</h4>
+            <p class="event-time">⏰ 6:30 PM Onwards</p>
+            <p class="event-venue">📍 Crystal Ballroom<br>City, State</p>
+            <p class="event-dress">Dress Code: Glamour / Indo-Western</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions ➔</a>
+          </div>
+        </div>
+
+        <!-- Event 3: Wedding Ceremony -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="event-tag">Main Ceremony</span>
+            <h4 class="event-title">Wedding Muhurtham</h4>
+            <p class="event-time">⏰ 10:15 AM – 1:00 PM</p>
+            <p class="event-venue">📍 The Grand Mandapam &amp; Gardens<br>City, State</p>
+            <p class="event-dress">Dress Code: Traditional Indian Formal</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions ➔</a>
+          </div>
+        </div>
+
+        <!-- Event 4: Reception -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="event-tag">Dinner &amp; Celebration</span>
+            <h4 class="event-title">Grand Reception</h4>
+            <p class="event-time">⏰ 7:00 PM – Late</p>
+            <p class="event-venue">📍 Grand Pavilion &amp; Banquets<br>City, State</p>
+            <p class="event-dress">Dress Code: Formal Elegance</p>
+            <a href="https://maps.google.com" target="_blank" class="map-btn">Get Directions ➔</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- RSVP Action -->
-    <section class="rsvp-section">
-      <h3 class="section-title" style="margin-top: 0;">Kindly Respond</h3>
-      <p style="font-size: 0.9rem; margin-bottom: 24px; color: #718096;">
-        Please confirm your attendance by September 15, 2026.
-      </p>
-      <!-- Change the WhatsApp link or replace with your Google Form URL -->
-      <a href="https://wa.me/1234567890?text=Hello!+I+would+love+to+confirm+my+attendance+for+Sophia+and+Alexander's+wedding." target="_blank" class="rsvp-btn">
-        RSVP via WhatsApp
-      </a>
+    <!-- RSVP Section With Direct Google Sheet Integration -->
+    <section class="rsvp-section" id="rsvp">
+      <h3 class="section-title" style="margin-top: 0;">RSVP</h3>
+      <p class="section-desc">Kindly respond by November 15, 2026</p>
+
+      <form id="rsvp-form" class="rsvp-form">
+        <div class="form-group">
+          <label for="guest_name">Full Name *</label>
+          <input type="text" id="guest_name" name="guest_name" placeholder="Your Name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Phone or Email *</label>
+          <input type="text" id="contact" name="contact" placeholder="Phone number or email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="attending">Will you be attending? *</label>
+          <select id="attending" name="attending" required>
+            <option value="Joyfully Accepts">Joyfully Accepts</option>
+            <option value="Regretfully Declines">Regretfully Declines</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="guest_count">Total Number of Guests Attending *</label>
+          <select id="guest_count" name="guest_count">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5+">5+ Guests</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="events_attending">Events You Plan to Attend</label>
+          <input type="text" id="events_attending" name="events_attending" placeholder="e.g. All Events / Reception only" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Wishes or Dietary Notes</label>
+          <textarea id="message" name="message" rows="3" placeholder="Warm wishes or dietary preferences..."></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="submit-btn">Send RSVP</button>
+      </form>
+
+      <div id="form-status"></div>
     </section>
 
     <footer>
-      <p>With love, Sophia &amp; Alexander</p>
+      <p>We look forward to celebrating with you!<br>With love, Swapnil &amp; Sarvani</p>
     </footer>
 
   </div>
@@ -308,8 +586,8 @@
       document.getElementById('welcome-overlay').classList.add('hidden');
     }
 
-    // Live Countdown Timer
-    const weddingDate = new Date("October 18, 2026 16:00:00").getTime();
+    // Live Countdown Timer (Update to your actual wedding date)
+    const weddingDate = new Date("December 13, 2026 10:15:00").getTime();
 
     const timerInterval = setInterval(function() {
       const now = new Date().getTime();
@@ -331,6 +609,59 @@
       document.getElementById("mins").innerText = String(mins).padStart(2, '0');
       document.getElementById("secs").innerText = String(secs).padStart(2, '0');
     }, 1000);
+
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+    const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL";
+
+    const rsvpForm = document.getElementById('rsvp-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
+
+    rsvpForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL") {
+        formStatus.className = "error";
+        formStatus.innerText = "Please link your Google Sheet Web App URL in the script to start recording RSVPs.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Submitting...";
+
+      const formData = new FormData(rsvpForm);
+      const data = {
+        timestamp: new Date().toLocaleString(),
+        name: formData.get('guest_name'),
+        contact: formData.get('contact'),
+        attending: formData.get('attending'),
+        guestCount: formData.get('guest_count'),
+        events: formData.get('events_attending'),
+        message: formData.get('message')
+      };
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        formStatus.className = "success";
+        formStatus.innerText = "Thank you! Your RSVP has been received.";
+        rsvpForm.reset();
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send RSVP";
+      })
+      .catch((err) => {
+        formStatus.className = "error";
+        formStatus.innerText = "Something went wrong. Please try again or reach out directly.";
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Send RSVP";
+      });
+    });
   </script>
 </body>
 </html>
