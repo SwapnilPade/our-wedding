@@ -3,19 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Wedding Invitation | Swapnil & Sarvani</title>
-  <meta name="description" content="Swapnil and Sarvani are getting married on Sunday, December 13, 2026. See the schedule of events and send your RSVP." />
+  <title>Wedding Invitation | Swapnil &amp; Sarvani</title>
+  <meta name="description" content="Swapnil and Sarvani are getting married on Thursday, March 25, 2027 in Hyderabad. See the schedule of events and send your RSVP." />
   <meta name="theme-color" content="#f4ecdd" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Great+Vibes&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap" rel="stylesheet">
+  <script>
+    // RSVP Google Sheet Integration: Paste your Google Apps Script Web App URL below
+    window.GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby4FFvxTV8zMjbTibmSv4GI6mEl2QnfiGtfZl1WnhO-cZY15OR7gDyMEAHh6ozICl0Yyg/exec";
+  </script>
   <script type="module" crossorigin src="./assets/index-Bf1wO22b.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DJ-rx1Ae.css">
 </head>
 <body>
   <div id="root"></div>
   <noscript>
-    <p style="padding:24px;font-family:serif;text-align:center">Swapnil &amp; Sarvani, Sunday, December 13, 2026. Please enable JavaScript to open the invitation.</p>
+    <p style="padding:24px;font-family:serif;text-align:center">Swapnil &amp; Sarvani, Thursday, March 25, 2027. Please enable JavaScript to open the invitation.</p>
   </noscript>
+  <script>
+    (function() {
+      let lastTime = 0;
+      setInterval(async () => {
+        try {
+          const res = await fetch('/__poll');
+          if (res.ok) {
+            const data = await res.text();
+            if (lastTime && data !== lastTime) {
+              console.log('[LiveReload] Change detected, reloading...');
+              location.reload();
+            }
+            lastTime = data;
+          }
+        } catch(e) {}
+      }, 1000);
+    })();
+  </script>
 </body>
 </html>
