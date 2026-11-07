@@ -1034,3 +1034,57 @@ html[lang="mr"] .schedule .event-about {
   background: rgba(255, 255, 255, 0.5) !important;
   border: 1px solid rgba(184, 134, 11, 0.35) !important;
 }
+/* ========================================================
+   KEYBOARD-OPEN VIEWPORT ADJUSTMENT (WHATSAPP STYLE)
+   ======================================================== */
+html.keyboard-open,
+html.keyboard-open body {
+  scroll-snap-type: none !important;
+  scroll-behavior: smooth !important;
+  height: 100% !important;
+}
+
+html.keyboard-open .page-slot {
+  scroll-snap-align: none !important;
+  height: auto !important;
+  min-height: 100svh !important;
+}
+
+html.keyboard-open .page-layer {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+html.keyboard-open .card-frame-art {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100svh !important;
+  pointer-events: none !important;
+}
+
+html.keyboard-open .rsvp-card-section {
+  justify-content: flex-start !important;
+  padding-top: clamp(12px, 2svh, 20px) !important;
+  padding-bottom: max(var(--kb-height, 280px), 340px) !important;
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+  min-height: 100% !important;
+  height: auto !important;
+}
+
+html.keyboard-open .rsvp-card-inner {
+  margin-top: 2px !important;
+  padding-bottom: 24px !important;
+}
+
+.custom-input {
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s !important;
+}
+
+.custom-input:focus {
+  border-color: var(--wax) !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(123, 44, 46, 0.25), 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  outline: none !important;
+}
