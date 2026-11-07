@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Wedding Invitation | Swapnil &amp; Sarvani</title>
   <meta name="description" content="Swapnil and Sarvani are getting married on Thursday, March 25, 2027 in Hyderabad. See the schedule of events and send your RSVP." />
   <meta name="theme-color" content="#f4ecdd" />
@@ -15,81 +15,6 @@
   </script>
   <script type="module" crossorigin src="./assets/index-Bf1wO22b.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DJ-rx1Ae.css">
-  <script>
-    // WhatsApp-Style Mobile Virtual Keyboard & Viewport Manager
-    (function() {
-      let isKeyboardOpen = false;
-
-      function updateKeyboardState() {
-        const active = document.activeElement;
-        const isInput = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT');
-        
-        let kbHeight = 0;
-        if (window.visualViewport) {
-          kbHeight = Math.max(0, window.innerHeight - window.visualViewport.height);
-        }
-        
-        const open = isInput || kbHeight > 140;
-
-        if (open) {
-          if (!isKeyboardOpen) {
-            isKeyboardOpen = true;
-            document.documentElement.classList.add('keyboard-open');
-            document.body.classList.add('keyboard-open');
-          }
-          if (kbHeight > 0) {
-            document.documentElement.style.setProperty('--kb-height', kbHeight + 'px');
-          }
-          if (isInput) {
-            const centerActiveField = () => {
-              if (document.activeElement === active) {
-                try {
-                  active.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } catch(e) {}
-              }
-            };
-            requestAnimationFrame(centerActiveField);
-            setTimeout(centerActiveField, 80);
-            setTimeout(centerActiveField, 280);
-          }
-        } else {
-          if (isKeyboardOpen) {
-            isKeyboardOpen = false;
-            document.documentElement.classList.remove('keyboard-open');
-            document.body.classList.remove('keyboard-open');
-            document.documentElement.style.removeProperty('--kb-height');
-          }
-        }
-      }
-
-      window.addEventListener('focusin', updateKeyboardState, true);
-      window.addEventListener('focusout', function() {
-        setTimeout(updateKeyboardState, 140);
-      }, true);
-
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener('resize', updateKeyboardState);
-        window.visualViewport.addEventListener('scroll', updateKeyboardState);
-      }
-
-      // Tap outside inputs to smoothly dismiss virtual keyboard
-      document.addEventListener('click', function(e) {
-        if (isKeyboardOpen) {
-          const isInteractive = e.target && (
-            e.target.tagName === 'INPUT' ||
-            e.target.tagName === 'TEXTAREA' ||
-            e.target.tagName === 'SELECT' ||
-            e.target.tagName === 'BUTTON' ||
-            e.target.closest('button') ||
-            e.target.closest('.toggle-group')
-          );
-          if (!isInteractive && document.activeElement && typeof document.activeElement.blur === 'function') {
-            document.activeElement.blur();
-          }
-        }
-      });
-    })();
-  </script>
 </head>
 <body>
   <div id="root"></div>
